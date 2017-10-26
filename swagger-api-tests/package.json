@@ -13,12 +13,19 @@
   "dependencies": {
     "@types/restify": "^5.0.5",
     "@types/restify-cors-middleware": "^1.0.0",
+    "assert": "^1.4.1",
     "axios": "^0.16.2",
+    "chai": "^4.1.2",
+    "cucumber": "^3.0.6",
+    "require": "^2.4.20",
     "restify": "^5.2.0",
     "restify-cors-middleware": "^1.0.1",
     "restler": "^3.4.0",
     "swagger-typescript-codegen": "^1.2.0",
-    "typescript": "^2.5.3",
-    "chai":"^4.1.2"
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.47"
   }
 }
