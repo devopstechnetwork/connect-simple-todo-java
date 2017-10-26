@@ -48,12 +48,12 @@ defineSupportCode(function ({Given, When, Then}) {
     });
 
 
-    When(/^I add a new task$/, async () => {
+    When(/^I add a new task with title (.*)$/, async (title) => {
 
         let addTodo = await todoApi.addTodo({
             'body': {
                 'id': '1',
-                'title': 'string',
+                'title': title,
                 'resolved': true
             }
         }).then((response) => {
@@ -63,13 +63,14 @@ defineSupportCode(function ({Given, When, Then}) {
 
     })
 
-    Then(/^I should see response with id and (.*) as:$/, async (resolved) => {
+    Then(/^I should see response with id, title (.*) and resolved status (.*) as:$/, async (title,resolved) => {
         expect(newResponse).to.not.equal(null);
         let addedResponse = "'" + newResponse[0]["resolved"] + "'"
         console.log(addedResponse)
         expect(addedResponse).to.contain(resolved)
         console.log(newResponse[0]["id"]);
         expect(newResponse[0]["id"].length).to.not.equal(null);
+        expect(newResponse[0]["title"]).to.contain(title);
     });
 
     When(/^I call resolve todo api$/, async () => {
