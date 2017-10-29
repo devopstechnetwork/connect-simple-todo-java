@@ -9,7 +9,7 @@
     "sourceMap": true,
     "outDir": "test",
     "strictNullChecks": false,
-    "baseUrl": "http://localhost:3000/",
+    "baseUrl": "http://localhost:3001/",
     "typeRoots" : ["./node_modules/@types"],
     "paths": {
     },

@@ -8,6 +8,10 @@
   dependencies:
     "@types/node" "*"
 
+"@types/cucumber@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@types/cucumber/-/cucumber-2.0.4.tgz#fb2fc2cb972154a8feb5ceba4bc689686bc1fb05"
+
 "@types/node@*":
   version "8.0.31"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.31.tgz#d9af61093cf4bfc9f066ca34de0175012cfb0ce9"
@@ -30,6 +34,10 @@
     "@types/bunyan" "*"
     "@types/node" "*"
     "@types/spdy" "*"
+
+"@types/selenium-webdriver@^3.0.7":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-3.0.8.tgz#83de9dd7aaf25f7fbd967c0d4fcc8112746dbf31"
 
 "@types/spdy@*":
   version "3.4.3"
