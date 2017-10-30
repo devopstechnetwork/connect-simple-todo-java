@@ -61,7 +61,7 @@ Then(/^I should get a response with an id, title (.*) and a task resolved status
     expect(newResponse[0]["title"]).to.equal(title);
 });
 
-When(/^I call resolve to-do api$/, async () => {
+When(/^I update a task and resolve it$/, async () => {
 
     newResponse = await todoApi.resolveTodo({
         'id': newResponse[0]["id"],
@@ -72,7 +72,7 @@ When(/^I call resolve to-do api$/, async () => {
 
 });
 
-Then(/^I should get a null response$/, () => {
+Then(/^the list is empty$/, () => {
 
     expect(todo).to.eql([]);
 

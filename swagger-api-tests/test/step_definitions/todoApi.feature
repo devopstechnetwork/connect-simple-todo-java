@@ -1,8 +1,8 @@
-Feature: Simple todo app
-  As simple todo app service
-  I want to be able to add, resolve and delete tasks
+Feature: Todo API
+  As todo api
+  I want to be able to get, post, update and delete todos
 
-  Scenario Outline: Add a new to-do task
+  Scenario Outline: Add a new to-do task (GET and POST Todo)
     Given I get a list of to-dos
     And I delete all the existing to-do tasks
     When I add a new task with title <title>
@@ -12,11 +12,11 @@ Feature: Simple todo app
       | taskResolvedStatus | title    |
       | false              | Buy Milk |
 
-  Scenario Outline: Resolve a newly added to-do task
+  Scenario Outline: Update a to-do task (PUT Todo)
     Given I get a list of to-dos
     And I delete all the existing to-do tasks
     And I add a new task with title <title>
-    When I call resolve to-do api
+    When I update a task and resolve it
     And I get a list of to-dos
     Then I should get a response with an id, title <title> and a task resolved status as <taskResolvedStatus>
 
@@ -25,15 +25,9 @@ Feature: Simple todo app
       | true               | Buy Chocolate |
 
 
-  Scenario Outline: Delete a resolved to-do task
+  Scenario: Delete a to-do task (DELETE Todo)
     Given I get a list of to-dos
     And I delete all the existing to-do tasks
-    And I add a new task with title <title>
-    And I call resolve to-do api
-    When I delete all the existing to-do tasks
     And I get a list of to-dos
-    Then I should get a null response
+    Then the list is empty
 
-    Examples:
-      | title    |
-      | Buy Milk |
