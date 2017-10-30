@@ -5,7 +5,6 @@ import {expect} from "chai";
 import TodoApi from "../../generated-api";
 import {Given, When, Then} from 'cucumber';
 
-
 const todoApi = new TodoApi('http://simple-app-api.connect.cd:3001');
 let key: any;
 let todo: any;
@@ -73,7 +72,7 @@ When(/^I update a task and resolve it$/, async () => {
 
 Then(/^the list is empty$/, () => {
 
-    expect(todo).to.eql([]);
+    expect(todo).to.be.empty;
 
 });
 

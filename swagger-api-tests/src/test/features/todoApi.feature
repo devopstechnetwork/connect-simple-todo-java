@@ -17,7 +17,6 @@ Feature: Todo API
     And I delete all the existing to-do tasks
     And I add a new task with title <title>
     When I update a task and resolve it
-    And I get a list of to-dos
     Then I should get a response with an id, title <title> and a task resolved status as <taskResolvedStatus>
 
     Examples:

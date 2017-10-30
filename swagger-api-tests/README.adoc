@@ -2,3 +2,5 @@ Run yarn install
 
 Run yarn generate-api-client
 
+Run yarn test
+
