@@ -7,9 +7,8 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    //"outDir": "test",
     "strictNullChecks": false,
-    "baseUrl": "http://localhost:3001/",
+    "baseUrl": "http://simple-app-api.connect.cd:3001",
     "typeRoots" : ["./node_modules/@types"],
     "paths": {
     },

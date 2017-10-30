@@ -24,7 +24,6 @@ Feature: Todo API
       | taskResolvedStatus | title         |
       | true               | Buy Chocolate |
 
-
   Scenario: Delete a to-do task (DELETE Todo)
     Given I get a list of to-dos
     And I delete all the existing to-do tasks
