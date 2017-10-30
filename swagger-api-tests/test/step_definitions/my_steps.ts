@@ -1,11 +1,15 @@
 'use strict';
 
-import {defineSupportCode} from "cucumber";
+import {defineSupportCode} from 'cucumber';
+import * as path from "path";
 import {expect} from "chai";
+
 import TodoApi from "../generated-api";
 
+import {Given, When, Then} from 'cucumber';
+import {isBoolean} from "util";
 
-import {Given, When, Then} from "cucumber";
+// defineSupportCode(function ({Given, When, Then}) {
 
     const todoApi = new TodoApi('http://localhost:3001');
     let key: any;
@@ -16,15 +20,15 @@ import {Given, When, Then} from "cucumber";
 
         let todos = await todoApi.getTodos({});
         console.log("I get the response now:" + todos);
-            if (todos) {
-                for (let i = 0; i < todos.length; i++) {
-                    key = todos[i]["id"];
-                    console.log("resolved status is :" + todos[i]["resolved"])
-                }
-
+        if (todos) {
+            for (let i = 0; i < todos.length; i++) {
+                key = todos[i]["id"];
+                console.log("resolved status is :" + todos[i]["resolved"])
             }
-         res = todos;
-        });
+
+        }
+        res = todos;
+    });
 
     Given(/^I delete all the existing to-do tasks$/, async () => {
         if (key) {
@@ -36,7 +40,7 @@ import {Given, When, Then} from "cucumber";
                         'id': res[i]["id"]
                     }
                 });
-                    console.log("response after delete" + delResponse);
+                console.log("response after delete" + delResponse);
             }
         }
 
@@ -45,30 +49,26 @@ import {Given, When, Then} from "cucumber";
 
     When(/^I add a new task with title (.*)$/, async (title: string) => {
 
-        const addTodo = await todoApi.addTodo({
+        newResponse = await todoApi.addTodo({
             'body': {
                 'id': '1',
                 'title': title,
                 'resolved': true
             }
-        })
-           //  .then((response) => {
-           // console.log(response);
-           //  newResponse = response
+        });
 
-        newResponse = addTodo;
         console.log("I wanna see the response of this :" + newResponse);
 
     });
 
-    Then(/^I should get a response with an id, title (.*) and a task resolved status as (.*)$/, (title: string, resolved: boolean) => {
-        expect(newResponse).to.not.equal(null);
-        let addedResponse = "'" + newResponse[0]["resolved"] + "'";
-        console.log("new response is "+ addedResponse);
-        expect(addedResponse).to.contain(resolved);
-        console.log(newResponse[0]["id"]);
-        expect(newResponse[0]["id"].length).to.not.equal(null);
-        expect(newResponse[0]["title"]).to.contain(title);
+    Then(/^I should get a response with an id, title (.*) and a task resolved status as (.*)$/, (title: string, resolved: string) => {
+
+        let expected = (resolved == 'true');
+
+        console.log('Response value',newResponse[0]["resolved"] )
+        expect(newResponse[0]["resolved"]).to.equal(expected);
+        expect(parseInt(newResponse[0]["id"])).to.be.a('number');
+        expect(newResponse[0]["title"]).to.equal(title);
     });
 
     When(/^I call resolve to-do api$/, async () => {
@@ -79,9 +79,9 @@ import {Given, When, Then} from "cucumber";
                 'id': newResponse[0]["id"]
             }
         })
-            // .then((response) => {
-            // console.log(response);
-            // newResponse = response
+        // .then((response) => {
+        // console.log(response);
+        // newResponse = response
 
         newResponse = resolveTodo;
         console.log("new response after resolving is :" + newResponse);
@@ -93,3 +93,5 @@ import {Given, When, Then} from "cucumber";
         expect(res).to.eql([]);
 
     });
+// });
+

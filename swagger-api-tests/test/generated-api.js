@@ -3,10 +3,10 @@
 /* tslint:disable:member-ordering */
 /* tslint:disable:quotemark */
 /* tslint:disable:typedef-whitespace */
-exports.__esModule = true;
-var axios_1 = require("axios");
-var TodoApi = (function () {
-    function TodoApi(domain, logger) {
+Object.defineProperty(exports, "__esModule", { value: true });
+const axios_1 = require("axios");
+class TodoApi {
+    constructor(domain, logger) {
         this.logger = logger;
         this.domain = '';
         this.globalHeaders = {};
@@ -18,36 +18,34 @@ var TodoApi = (function () {
         this.addTodo = this.addTodo.bind(this);
         this.getTodos = this.getTodos.bind(this);
     }
-    TodoApi.prototype.request = function (method, url, body, headers, queryParameters, form, reject, resolve) {
-        var _this = this;
+    request(method, url, body, headers, queryParameters, form, reject, resolve) {
         if (this.logger) {
-            this.logger.log("Call " + method + " " + url);
+            this.logger.log(`Call ${method} ${url}`);
         }
-        Object.keys(this.globalHeaders).forEach(function (key) {
-            headers[key] = _this.globalHeaders[key];
+        Object.keys(this.globalHeaders).forEach(key => {
+            headers[key] = this.globalHeaders[key];
         });
-        return axios_1["default"]({
-            method: method,
-            url: url,
+        return axios_1.default({
+            method,
+            url,
             params: queryParameters,
             data: body,
             headers: headers
-        }).then(function (response) {
+        }).then((response) => {
             resolve(response.data);
-        })["catch"](function (error) {
+        }).catch((error) => {
             reject(error);
         });
-    };
-    TodoApi.prototype.resolveTodo = function (parameters) {
-        var _this = this;
-        var domain = parameters.$domain ? parameters.$domain : this.domain;
-        var path = '/resolve-todo/{id}';
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-        return new Promise(function (resolve, reject) {
-            path = path.replace('{id}', "" + parameters['id']);
+    }
+    resolveTodo(parameters) {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/resolve-todo/{id}';
+        let body;
+        let queryParameters = {};
+        let headers = {};
+        let form = {};
+        return new Promise((resolve, reject) => {
+            path = path.replace('{id}', `${parameters['id']}`);
             if (parameters['id'] === undefined) {
                 reject(new Error('Missing required  parameter: id'));
                 return;
@@ -57,19 +55,18 @@ var TodoApi = (function () {
                     queryParameters[parameterName] = parameters.$queryParameters[parameterName];
                 });
             }
-            _this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
-    };
-    TodoApi.prototype.removeTodo = function (parameters) {
-        var _this = this;
-        var domain = parameters.$domain ? parameters.$domain : this.domain;
-        var path = '/remove-todo/{id}';
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-        return new Promise(function (resolve, reject) {
-            path = path.replace('{id}', "" + parameters['id']);
+    }
+    removeTodo(parameters) {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/remove-todo/{id}';
+        let body;
+        let queryParameters = {};
+        let headers = {};
+        let form = {};
+        return new Promise((resolve, reject) => {
+            path = path.replace('{id}', `${parameters['id']}`);
             if (parameters['id'] === undefined) {
                 reject(new Error('Missing required  parameter: id'));
                 return;
@@ -79,18 +76,17 @@ var TodoApi = (function () {
                     queryParameters[parameterName] = parameters.$queryParameters[parameterName];
                 });
             }
-            _this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
-    };
-    TodoApi.prototype.addTodo = function (parameters) {
-        var _this = this;
-        var domain = parameters.$domain ? parameters.$domain : this.domain;
-        var path = '/add-todo';
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-        return new Promise(function (resolve, reject) {
+    }
+    addTodo(parameters) {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/add-todo';
+        let body;
+        let queryParameters = {};
+        let headers = {};
+        let form = {};
+        return new Promise((resolve, reject) => {
             if (parameters['body'] !== undefined) {
                 body = parameters['body'];
             }
@@ -101,27 +97,25 @@ var TodoApi = (function () {
             }
             form = queryParameters;
             queryParameters = {};
-            _this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
-    };
-    TodoApi.prototype.getTodos = function (parameters) {
-        var _this = this;
-        var domain = parameters.$domain ? parameters.$domain : this.domain;
-        var path = '/get-todos';
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-        return new Promise(function (resolve, reject) {
+    }
+    getTodos(parameters) {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/get-todos';
+        let body;
+        let queryParameters = {};
+        let headers = {};
+        let form = {};
+        return new Promise((resolve, reject) => {
             if (parameters.$queryParameters) {
                 Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
                     queryParameters[parameterName] = parameters.$queryParameters[parameterName];
                 });
             }
-            _this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
-    };
-    return TodoApi;
-}());
-exports["default"] = TodoApi;
+    }
+}
+exports.default = TodoApi;
 //# sourceMappingURL=generated-api.js.map

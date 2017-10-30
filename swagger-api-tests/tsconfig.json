@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
+    "target": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "outDir": "test",
+    //"outDir": "test",
     "strictNullChecks": false,
     "baseUrl": "http://localhost:3001/",
     "typeRoots" : ["./node_modules/@types"],
