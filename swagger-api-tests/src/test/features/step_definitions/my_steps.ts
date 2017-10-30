@@ -5,7 +5,9 @@ import {expect} from "chai";
 import TodoApi from "../../generated-api";
 import {Given, When, Then} from 'cucumber';
 
-const todoApi = new TodoApi('http://simple-app-api.connect.cd:3001');
+const file = require('../../properties/input.properties')
+
+const todoApi = new TodoApi(file.inputProperties.URL);
 let key: any;
 let todo: any;
 let newResponse: any;

@@ -8,14 +8,10 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "strictNullChecks": false,
-    "baseUrl": "http://simple-app-api.connect.cd:3001",
     "typeRoots" : ["./node_modules/@types"],
-    "paths": {
-    },
     "lib": ["dom", "es2015", "es2016"],
     "types": [
-      "node",
-      "selenium-webdriver"
+      "node"
     ]
   }
 }
