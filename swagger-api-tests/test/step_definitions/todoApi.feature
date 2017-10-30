@@ -25,15 +25,15 @@ Feature: Simple todo app
       | true               | Buy Chocolate |
 
 
-#  Scenario Outline: Delete a resolved to-do task
-#    Given I get a list of to-dos
-#    And I delete all the existing to-do tasks
-#    And I add a new task with title <title>
-#    And I call resolve to-do api
-#    When I delete all the existing to-do tasks
-#    And I get a list of to-dos
-#    Then I should see null response
-#
-#    Examples:
-#      | title    |
-#      | Buy Milk |
+  Scenario Outline: Delete a resolved to-do task
+    Given I get a list of to-dos
+    And I delete all the existing to-do tasks
+    And I add a new task with title <title>
+    And I call resolve to-do api
+    When I delete all the existing to-do tasks
+    And I get a list of to-dos
+    Then I should get a null response
+
+    Examples:
+      | title    |
+      | Buy Milk |
