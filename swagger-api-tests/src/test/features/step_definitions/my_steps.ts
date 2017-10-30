@@ -2,7 +2,7 @@
 
 import {defineSupportCode} from 'cucumber';
 import {expect} from "chai";
-import TodoApi from "../generated-api";
+import TodoApi from "../../generated-api";
 import {Given, When, Then} from 'cucumber';
 
 
