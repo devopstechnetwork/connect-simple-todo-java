@@ -1,6 +1,7 @@
 import * as restify from 'restify';
 import * as corsMiddleware from 'restify-cors-middleware';
 import {ITodoApiController, Todo, TodoApiRouter} from "./generated-interface";
+import * as uuid from 'uuid/v4';
 
 const api = restify.createServer();
 
@@ -31,7 +32,7 @@ class TodoController implements ITodoApiController {
 
     async addTodo(parameters: { body?: Todo }): Promise<Array<Todo>> {
         const todo = new Todo();
-        todo.id = Math.floor(Math.random() * 20).toString();
+        todo.id = uuid().toString();
         todo.title = parameters.body.title;
         todo.resolved = false;
 
