@@ -3,6 +3,3 @@ Run `yarn install`
 Then run `yarn generate-api-client`
 
 Finally, run `yarn test`
-
-Run yarn test
-
