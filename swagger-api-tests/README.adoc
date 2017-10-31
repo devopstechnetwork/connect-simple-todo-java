@@ -1,4 +1,6 @@
-Run yarn install
+Run `yarn install`
 
-Run yarn generate-api-client
+Then run `yarn generate-api-client`
+
+Finally, run `yarn test`
 
