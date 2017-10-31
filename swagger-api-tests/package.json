@@ -4,11 +4,12 @@
   "main": "index.js",
   "repository": "https://github.com/ClearPointNZ/connect-simple-todos-app.git",
   "author": "fyodor <fedor.jj@gmail.com>",
-  "license": "Apache 2",
+  "license": "Apache-2.0",
   "scripts": {
     "compile": "node_modules/.bin/tsc",
     "generate-api-client": "node scripts/generate-api.js",
-    "start": "yarn compile && node app/app.js"
+    "start": "yarn compile && node app/app.js",
+    "test": "yarn compile && node_modules/cucumber/bin/cucumber.js src/test/features/todoApi.feature"
   },
   "dependencies": {
     "@types/restify": "^5.0.5",
@@ -27,8 +28,6 @@
     "@types/selenium-webdriver": "^3.0.7"
   },
   "devDependencies": {
-    "@types/node": "^8.0.47",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1"
+    "@types/node": "^8.0.47"
   }
 }
