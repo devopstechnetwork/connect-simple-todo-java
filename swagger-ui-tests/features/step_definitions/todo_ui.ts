@@ -1,13 +1,11 @@
 'use strict';
 import {defineSupportCode} from "cucumber";
 import {expect} from "chai";
-import {Locator, until, WebElement, WebElementPromise} from "selenium-webdriver";
 
-const By = require('selenium-webdriver').By;
+let todoUiPages = require('../page_objects/todo_ui_pages');
+let todoUiPageObject = new todoUiPages();
 
 const tsconfig = require("../../../swagger-ui-tests/tsconfig.json");
-
-let deleteButton: WebElement = By.xpath("//button[text()='Delete']");
 
 defineSupportCode(function ({Given, When, Then}) {
 
@@ -19,79 +17,58 @@ defineSupportCode(function ({Given, When, Then}) {
 
     Given(/^I add a new (.*)$/, async function (task) {
 
-        let self = this;
-        await self.driver.wait(until.elementsLocated(By.css('input')));
-        await self.driver.findElement(By.css('input')).sendKeys(task).then(async () => {
-            await self.driver.findElement(By.css('button[type="submit"]')).click().then(async () => {
-                console.log("new task added");
-
-            });
-
-        });
+        await todoUiPageObject.addTodoTask(this, task);
 
     });
 
     Then(/^I should see a newly added (.*) in the simple todo app page$/, async function (task) {
 
-        await this.driver.findElement(By.css('li.qa-main')).getText().then(async (list) => {
+        let self = this;
 
-            expect(list).to.contain(task);
-
-            console.log('My list contains ' + list);
-        })
+        let list: string = await todoUiPageObject.getRowText(self);
+        expect(list).to.contain(task);
+        console.log('My list contains ' + list);
 
     });
 
     Given(/^I delete the above created task$/, async function () {
 
-        await this.driver.findElement(By.xpath("//button[text()='Delete']")).click();
-
+        await todoUiPageObject.deleteATask(this);
         console.log('deleted the created task');
 
     });
 
     When(/^I click on done$/, async function () {
 
-        await this.driver.findElement(By.className("qa-done-button")).click().then(async () => {
-
-            console.log('done');
-
-        });
+        await todoUiPageObject.clickDoneButton(this);
+        console.log('done');
 
     });
 
     Then(/^I should see the text as (.*)$/, async function (deletedText) {
 
-        await this.driver.findElement(By.css('li')).getText().then(async (list) => {
+        let self = this;
 
-            console.log("my li list contains :" + list);
-
-            expect(list).to.equal(deletedText);
-
-        });
-
+        let list: string = await todoUiPageObject.deletedText(self);
+        console.log("my li list contains :" + list);
+        expect(list).to.equal(deletedText);
     });
 
     Then(/^I delete the above done task$/, async function () {
+        let self = this;
 
-        await this.driver.findElement(By.className("qa-delete-button")).click().then(async () => {
-
-            console.log('done task is deleted');
-
-        });
+        await todoUiPageObject.deleteDoneTask(self);
+        console.log('done task is deleted');
     });
 
 
     Given(/I delete the existing tasks$/, async function () {
-
         let self = this;
-        await this.driver.wait(until.elementsLocated(By.css('input')));
-        const elements = await this.driver.findElements(By.css('li'))
 
+        await todoUiPageObject.waitInput(self);
+        let elements = await todoUiPageObject.mainList(self);
         for (let element of elements) {
-
-            await self.driver.findElement(By.className("qa-delete-button")).click();
-
+            await todoUiPageObject.deleteDoneTask(self);
         }
 
     });
