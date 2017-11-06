@@ -11,7 +11,7 @@ defineSupportCode(function ({Given, When, Then}) {
 
     When(/^I launch the simple todo app$/, async function () {
 
-        this.driver.get(tsconfig.compilerOptions.baseUrl);
+        this.driver.get('http://localhost:3000/');
 
     });
 
@@ -56,18 +56,6 @@ defineSupportCode(function ({Given, When, Then}) {
 
         await todoUiPageObject.deleteDoneTask(self);
         console.log("***** Task is deleted successfully ***** ");
-
-    });
-
-
-    Given(/I delete the existing tasks$/, async function () {
-        let self = this;
-
-        await todoUiPageObject.waitInput(self);
-        let elements = await todoUiPageObject.mainList(self);
-        for (let element of elements) {
-            await todoUiPageObject.deleteDoneTask(self);
-        }
 
     });
 });
