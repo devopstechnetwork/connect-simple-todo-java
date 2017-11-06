@@ -27,21 +27,19 @@ defineSupportCode(function ({Given, When, Then}) {
 
         let list: string = await todoUiPageObject.getRowText(self);
         expect(list).to.contain(task);
-        console.log('My list contains ' + list);
 
     });
 
     Given(/^I delete the above created task$/, async function () {
 
         await todoUiPageObject.deleteATask(this);
-        console.log('deleted the created task');
 
     });
 
     When(/^I click on done$/, async function () {
 
         await todoUiPageObject.clickDoneButton(this);
-        console.log('done');
+        console.log("***** Task is updated successfully ***** ");
 
     });
 
@@ -50,7 +48,6 @@ defineSupportCode(function ({Given, When, Then}) {
         let self = this;
 
         let list: string = await todoUiPageObject.deletedText(self);
-        console.log("my li list contains :" + list);
         expect(list).to.equal(deletedText);
     });
 
@@ -58,7 +55,8 @@ defineSupportCode(function ({Given, When, Then}) {
         let self = this;
 
         await todoUiPageObject.deleteDoneTask(self);
-        console.log('done task is deleted');
+        console.log("***** Task is deleted successfully ***** ");
+
     });
 
 
