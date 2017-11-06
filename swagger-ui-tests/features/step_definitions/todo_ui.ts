@@ -5,8 +5,6 @@ import {expect} from "chai";
 let todoUiPages = require('../page_objects/todo_ui_pages');
 let todoUiPageObject = new todoUiPages();
 
-const tsconfig = require("../../../swagger-ui-tests/tsconfig.json");
-
 defineSupportCode(function ({Given, When, Then}) {
 
     When(/^I launch the simple todo app$/, async function () {
