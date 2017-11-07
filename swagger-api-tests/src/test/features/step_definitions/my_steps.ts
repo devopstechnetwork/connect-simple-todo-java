@@ -5,7 +5,10 @@ import {expect} from "chai";
 import TodoApi from "../../generated-api";
 import {Given, When, Then} from 'cucumber';
 
-const file = require('../../properties/input.properties')
+const file = require('../../properties/input.properties');
+
+let apiPages = require('../page_objects/api_page_obj');
+let apiPageObject = new apiPages();
 
 const todoApi = new TodoApi(file.inputProperties.URL);
 let key: any;
@@ -14,14 +17,9 @@ let newResponse: any;
 
 Given(/^I get a list of to-dos$/, async () => {
 
-    todo = await todoApi.getTodos({});
+   await apiPageObject.getApi();
 
-    if (todo) {
-        for (let i = 0; i < todo.length; i++) {
-            key = todo[i]["id"];
-            console.log("***** Resolved status is :" + todo[i]["resolved"] + ' *****')
-        }
-    }
+
 });
 
 Given(/^I delete all the existing to-do tasks$/, async () => {
