@@ -3,3 +3,6 @@ build/
 dist/
 **/**/generated-*.ts
 **/.idea/
+/swagger-api-tests/src/test/generated-api.js
+/swagger-api-tests/src/test/generated-api.js.map
+
