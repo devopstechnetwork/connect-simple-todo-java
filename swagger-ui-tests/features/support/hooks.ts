@@ -4,7 +4,7 @@ import {defineSupportCode} from "cucumber";
 const fs = require('fs');
 const path = require('path');
 const sanitize = require("sanitize-filename");
-let todoUiPages = require('../page_objects/todo_ui_pages');
+let todoUiPages = require('../todo_page_objects/todo_ui_pages');
 let todoUiPageObject = new todoUiPages();
 
 defineSupportCode(function({After, Before}) {
