@@ -2,7 +2,7 @@
 import {defineSupportCode} from "cucumber";
 import {expect} from "chai";
 
-let todoUiPages = require('../simple_page_objects/todo_ui_pages');
+let todoUiPages = require('../page_objects/simple_ui_pages');
 let todoUiPageObject = new todoUiPages();
 
 defineSupportCode(function ({Given, When, Then}) {
