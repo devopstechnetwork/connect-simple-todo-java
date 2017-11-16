@@ -7,7 +7,7 @@ import {Given, When, Then} from 'cucumber';
 
 const file = require('../../properties/input.properties');
 
-let apiPages = require('../todo_page_objects/api_page_obj');
+let apiPages = require('../simple_page_objects/api_page_obj');
 let apiPageObject = new apiPages();
 
 const todoApi = new TodoApi(file.inputProperties.URL);
