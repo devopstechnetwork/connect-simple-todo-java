@@ -5,8 +5,7 @@ import {expect} from "chai";
 import TodoApi from "../../generated-api";
 import {Given, When, Then} from 'cucumber';
 
-const file = require('../../properties/input.properties')
-
+const file = require('../../properties/input.properties');
 const todoApi = new TodoApi(file.inputProperties.URL);
 let key: any;
 let todo: any;
@@ -22,6 +21,7 @@ Given(/^I get a list of to-dos$/, async () => {
             console.log("***** Resolved status is :" + todo[i]["resolved"] + ' *****')
         }
     }
+
 });
 
 Given(/^I delete all the existing to-do tasks$/, async () => {

@@ -1,0 +1,13 @@
+Run `yarn install`
+
+
+*****Set up to run your tests locally******
+1. Change directory to swagger-backend and run yarn start
+2. Change directory to swagger-frontend and run yarn start
+3. Make sure you point the url to your localhost in all of your tests (you can see it is now pointed to run tests in the node)
+just need to replace "simple-app-api.connect.cd" with "localhost" in your tests and App.tsx
+*****To Run UI Tests******
+1. In the edit configuration select Cucumber.js
+2. Add feature file location as "YOURPROJECTLOCATION/swagger-ui-tests/features/simpleTodoUi.feature"
+3. Add Executable path location as "YOURPROJECTLOCATION/swagger-ui-tests/node_modules/cucumber/bin/cucumber.js"
+4. And click on apply and run
