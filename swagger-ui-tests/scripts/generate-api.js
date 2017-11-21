@@ -22,4 +22,4 @@ const tsSourceCode = CodeGen.getCustomCode({
   },
 });
 
-fs.writeFileSync('src/test/generated-api.ts', tsSourceCode);
+fs.writeFileSync('src/generated-api.ts', tsSourceCode);

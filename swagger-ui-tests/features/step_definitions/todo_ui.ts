@@ -9,7 +9,7 @@ defineSupportCode(function ({Given, When, Then}) {
 
     When(/^I launch the simple todo app$/, async function () {
 
-        this.driver.get('http://localhost:3000/');
+        this.driver.get('http://simple-app-api.connect.cd:3000');
 
     });
 

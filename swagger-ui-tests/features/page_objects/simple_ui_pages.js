@@ -15,7 +15,7 @@ let del = By.xpath("//button[text()='Delete']");
 let done = By.className("qa-done-button");
 let delTask = By.className("qa-delete-button");
 let list = By.css('li');
-class todoUiPagesPageObjects {
+class todoUiPageObjects {
     constructor() {
         this.addTodoTask = function (context, task) {
             return __awaiter(this, void 0, void 0, function* () {
@@ -71,6 +71,6 @@ class todoUiPagesPageObjects {
         };
     }
 }
-exports.todoUiPagesPageObjects = todoUiPagesPageObjects;
-module.exports = todoUiPagesPageObjects;
+exports.todoUiPageObjects = todoUiPageObjects;
+module.exports = todoUiPageObjects;
 //# sourceMappingURL=simple_ui_pages.js.map

@@ -11,7 +11,7 @@ let done: Locator = By.className("qa-done-button");
 let delTask: Locator = By.className("qa-delete-button");
 let list: Locator = By.css('li');
 
-export class todoUiPagesPageObjects {
+export class todoUiPageObjects {
 
     addTodoTask = async function (context, task) {
         await context.waitForElement(input);
@@ -66,4 +66,4 @@ export class todoUiPagesPageObjects {
 
 }
 
-module.exports = todoUiPagesPageObjects;
+module.exports = todoUiPageObjects;
