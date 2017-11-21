@@ -21,7 +21,7 @@ defineSupportCode(function({After, Before}) {
         return this.driver.quit();
     });
     Before(async function(){
-        await this.driver.get('http://simple-app-api.connect.cd:3000');
+        await this.driver.get('http://todos.connect.cd/');
         let self = this;
         await todoUiPageObject.waitInput(self);
         let elements = await todoUiPageObject.mainList(self);
