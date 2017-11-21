@@ -2,6 +2,10 @@ node_modules/
 build/
 dist/
 **/**/generated-*.ts
+
+**/.idea/
+/swagger-api-tests/src/test/generated-api.js
+/swagger-api-tests/src/test/generated-api.js.map
 /.idea/
 
 # User-specific stuff:

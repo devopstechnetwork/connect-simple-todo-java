@@ -1,3 +1,8 @@
+
+
+*****Set up to run your tests locally******
+1. Change directory to swagger-backend and run yarn start
+
 Run `yarn install`
 
 Then run `yarn generate-api-client`
