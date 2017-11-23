@@ -9,7 +9,7 @@ defineSupportCode(function ({Given, When, Then}) {
 
     When(/^I launch the simple todo app$/, async function () {
 
-        this.driver.get('http://todos.connect.cd/');
+        this.driver.get('http://todos.connect.cd');
 
     });
 
@@ -44,16 +44,9 @@ defineSupportCode(function ({Given, When, Then}) {
     Then(/^I should see the text as (.*)$/, async function (deletedText) {
 
         let self = this;
-
+        await this.driver.sleep(1000);
         let list: string = await todoUiPageObject.deletedText(self);
         expect(list).to.equal(deletedText);
     });
 
-    Then(/^I delete the above done task$/, async function () {
-        let self = this;
-
-        await todoUiPageObject.deleteDoneTask(self);
-        console.log("***** Task is deleted successfully ***** ");
-
-    });
 });

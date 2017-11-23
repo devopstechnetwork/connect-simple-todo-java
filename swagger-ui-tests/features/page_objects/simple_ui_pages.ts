@@ -2,14 +2,13 @@
 
 let By = require('selenium-webdriver').By;
 import {expect} from "chai";
-import {Locator} from "selenium-webdriver";
+import {Locator, until} from "selenium-webdriver";
 
 let input: Locator = By.css('input');
 let main: Locator = By.className("qa-main");
-let del: Locator = By.xpath("//button[text()='Delete']");
 let done: Locator = By.className("qa-done-button");
 let delTask: Locator = By.className("qa-delete-button");
-let list: Locator = By.css('li');
+let list: Locator = By.css('li.qa-main');
 
 export class todoUiPageObjects {
 
@@ -18,7 +17,6 @@ export class todoUiPageObjects {
         await context.driver.findElement(input).sendKeys(task);
         await context.driver.findElement(By.css('button[type="submit"]')).click();
         console.log("***** New task is added ***** ");
-        return;
 
     };
 
@@ -30,20 +28,22 @@ export class todoUiPageObjects {
     };
 
     deleteATask = async function (context) {
-        await context.waitForElement(del);
-        await context.driver.findElement(del).click();
+        await context.waitForElement(delTask);
+        await context.driver.findElement(delTask).click();
 
     };
 
     waitInput = async function (context) {
-        await context.waitForElement(input);
+        await context.driver.wait(until.elementLocated(input))
+
     };
 
     mainList = async function (context, elements: any) {
-        elements = await context.driver.findElements(list);
-        return elements;
+            elements = await context.driver.findElements(list);
+            return Promise.resolve(elements);
 
     };
+
 
     clickDoneButton = async function (context) {
         await context.waitForElement(done);
@@ -58,12 +58,5 @@ export class todoUiPageObjects {
 
     };
 
-    deleteDoneTask = async function (context) {
-        await context.waitForElement(delTask);
-        await context.driver.findElement(delTask).click();
-
-    };
-
 }
-
 module.exports = todoUiPageObjects;

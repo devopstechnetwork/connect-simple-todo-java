@@ -17,7 +17,6 @@ Feature: Simple todo app
     And I add a new <task>
     When I click on done
     Then I should see the text as <doneDeletedText>
-    And I delete the above done task
 
     Examples:
       | task          | doneDeletedText      |

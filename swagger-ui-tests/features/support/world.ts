@@ -14,10 +14,16 @@ defineSupportCode(function ({setDefaultTimeout}) {
     setDefaultTimeout(60 * 1000);
 });
 
-const World = function World() {
+defineSupportCode(function ({setWorldConstructor}) {
+    setWorldConstructor(World);
+});
 
-    this.waitForElement = async function (locator: Locator, elements: any) {
-        elements = await this.driver.wait(until.elementsLocated(locator));
+const World = function World() {
+    let defaultTimeout = 10000;
+
+    this.waitForElement = async function (locator: Locator, elements: any, timeout) {
+        timeout = timeout || defaultTimeout;
+        elements = await this.driver.wait(until.elementsLocated(locator),timeout);
         return Promise.resolve(elements);
     };
 
@@ -28,9 +34,4 @@ const World = function World() {
     if (!fs.existsSync(screenshotsPath)) {
         fs.mkdirSync(screenshotsPath);
     }
-
 };
-
-defineSupportCode(function ({setWorldConstructor}) {
-    setWorldConstructor(World);
-});

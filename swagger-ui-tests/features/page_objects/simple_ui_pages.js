@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 let By = require('selenium-webdriver').By;
+const selenium_webdriver_1 = require("selenium-webdriver");
 let input = By.css('input');
 let main = By.className("qa-main");
-let del = By.xpath("//button[text()='Delete']");
 let done = By.className("qa-done-button");
 let delTask = By.className("qa-delete-button");
-let list = By.css('li');
+let list = By.css('li.qa-main');
 class todoUiPageObjects {
     constructor() {
         this.addTodoTask = function (context, task) {
@@ -23,7 +23,6 @@ class todoUiPageObjects {
                 yield context.driver.findElement(input).sendKeys(task);
                 yield context.driver.findElement(By.css('button[type="submit"]')).click();
                 console.log("***** New task is added ***** ");
-                return;
             });
         };
         this.getRowText = function (context, result) {
@@ -35,19 +34,19 @@ class todoUiPageObjects {
         };
         this.deleteATask = function (context) {
             return __awaiter(this, void 0, void 0, function* () {
-                yield context.waitForElement(del);
-                yield context.driver.findElement(del).click();
+                yield context.waitForElement(delTask);
+                yield context.driver.findElement(delTask).click();
             });
         };
         this.waitInput = function (context) {
             return __awaiter(this, void 0, void 0, function* () {
-                yield context.waitForElement(input);
+                yield context.driver.wait(selenium_webdriver_1.until.elementLocated(input));
             });
         };
         this.mainList = function (context, elements) {
             return __awaiter(this, void 0, void 0, function* () {
                 elements = yield context.driver.findElements(list);
-                return elements;
+                return Promise.resolve(elements);
             });
         };
         this.clickDoneButton = function (context) {
@@ -61,12 +60,6 @@ class todoUiPageObjects {
                 yield context.waitForElement(list);
                 text = yield context.driver.findElement(list).getText();
                 return text;
-            });
-        };
-        this.deleteDoneTask = function (context) {
-            return __awaiter(this, void 0, void 0, function* () {
-                yield context.waitForElement(delTask);
-                yield context.driver.findElement(delTask).click();
             });
         };
     }
