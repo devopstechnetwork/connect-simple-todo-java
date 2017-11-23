@@ -2,7 +2,9 @@
 This is a simple To Dos app written in Node/Typescript for demonstrating the Connect approach to continuous integration and deployment of a microservice
 
 == Installation Instructions
-See the respective `swagger-frontend` and `swagger-backend` folders for READMEs
+See the respective `swagger-frontend` and `swagger-backend` folders for READMEs  
+
+Also, check out our blog post for a walkthrough of how the app is built and deployed: http://connect.cd/2017/11/building-and-deploying-a-containerised-react-app-and-microservice-using-the-same-openapi-contract/
 
 == Build Status
 TravisCI link
