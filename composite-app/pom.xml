@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>com.bluetrainsoftware.bathe</groupId>
 			<artifactId>bathe-booter</artifactId>
-			<version>[3.1-SNAPSHOT, 4)</version>
+			<version>[3.1, 4)</version>
 		</dependency>
 
 		<dependency>
