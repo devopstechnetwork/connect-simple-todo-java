@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>cd.connect.todo</groupId>
+		<artifactId>composite-parent</artifactId>
+		<version>1.1-SNAPSHOT</version>
+		<relativePath>../composite-parent</relativePath>
+	</parent>
+
+	<artifactId>composite-app</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.bluetrainsoftware.bathe</groupId>
+			<artifactId>bathe-booter</artifactId>
+			<version>[3.1-SNAPSHOT, 4)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.bluetrainsoftware.bathe.initializers</groupId>
+			<artifactId>system-property-loader</artifactId>
+			<version>3.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>1.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cd.connect.common</groupId>
+			<artifactId>connect-env-logging</artifactId>
+			<version>1.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>cd.connect.composites.java</groupId>
+					<artifactId>connect-composite-jackson</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>cd.connect.composites.java</groupId>
+					<artifactId>connect-composite-test</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>cd.connect.todo</groupId>
+			<artifactId>composite-common</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cd.connect.todo</groupId>
+			<artifactId>composite-jersey</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cd.connect.todo</groupId>
+			<artifactId>composite-logging</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cd.connect.todo</groupId>
+			<artifactId>composite-opentracing</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cd.connect.todo</groupId>
+			<artifactId>composite-prometheus</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- this brings in the ConnectLayout logger and enhanced logging capability through modules -->
+		<dependency>
+			<groupId>cd.connect.common</groupId>
+			<artifactId>connect-java-logging-log4j2</artifactId>
+			<version>1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>cd.connect.composites.java</groupId>
+					<artifactId>connect-composite-log4j2</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+</project>

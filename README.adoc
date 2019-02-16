@@ -1,5 +1,19 @@
 == Description
-This is a simple To Dos app written in Node/Typescript for demonstrating the Connect approach to continuous integration and deployment of a microservice
+This is a simple todo microservice written in Java. The core of the application is extremely simple, but the
+intention is to show the use of an app that
+
+- exposes open tracing,
+- links tracing to logs,
+- exposes metrics for prometheus
+- uses a feature toggle service
+- has a feature in progress and it is testable by the FT service
+
+It also shows how
+- a proper Maven reactor build should work in CD environment,
+- separation of dependencies for ease of consistency across your project
+- Maven being able to provide reliable node 
+
+This example application is using Java 11.  
 
 == Installation Instructions
 See the respective `swagger-frontend` and `swagger-backend` folders for READMEs  

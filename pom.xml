@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cd.connect</groupId>
+	<artifactId>simple-app-reactor</artifactId>
+	<version>1.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>composite-parent</module>
+		<module>composite-jersey</module>
+		<module>composite-logging</module>
+		<module>composite-opentracing</module>
+		<module>composite-prometheus</module>
+		<module>composite-common</module>
+		<module>composite-app</module>
+		<module>todo-api</module>
+		<module>todo-backend</module>
+	</modules>
+
+</project>
