@@ -9,6 +9,14 @@
 	<version>1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+  <description>
+    We only have this parent to give us consistent versions of dependencies across different composities.
+    Sometimes, libraries are released in "waves" - even though only 1 or 2 artifacts change, projects often
+    release all of the artifacts together. Ideally they would just release individual artifacts that change
+    and create a composite that is a "named" release version, which would significantly decrease the library
+    churn and allow faster turnaround of patching (as items of a library do not need to release together).
+  </description>
+
 	<properties>
 		<jersey.version>2.27</jersey.version>
 		<slfj4.version>1.7.25</slfj4.version>

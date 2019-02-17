@@ -52,7 +52,7 @@
 			<version>1.6</version>
 		</dependency>
 
-		<!-- this gives us multi-threaded context propagation -->
+		<!-- this gives us multi-threaded context propagation, used for opentracing & slf4j -->
 		<dependency>
 			<groupId>nl.talsmasoftware.context</groupId>
 			<artifactId>opentracing-span-propagation</artifactId>

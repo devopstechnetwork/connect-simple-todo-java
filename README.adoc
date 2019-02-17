@@ -16,22 +16,38 @@ It also shows how
 This example application is using Java 11.  
 
 == Installation Instructions
-See the respective `swagger-frontend` and `swagger-backend` folders for READMEs  
 
-Also, check out our blog post for a walkthrough of how the app is built and deployed: http://connect.cd/2017/11/building-and-deploying-a-containerised-react-app-and-microservice-using-the-same-openapi-contract/
+This project requires you to have Java 11 as your primary Java and Maven 3.5 or later installed.
 
-== Build Status
-TravisCI link
+- Java 11 should be downloaded from https://adoptopenjdk.net/ (do not download it from Oracle)
 
-== Documentation
-There is no further specific documentation for this.
 
-The main documentation for link:http://connect.cd[Connect] can be found at: link:http://docs.connect.cd[docs.connect.cd]
+==== Java 11 on Mac OS X
 
-'''
-image::http://website.clearpoint.co.nz/connect/connect-logo-on-white-border.png[]
-link:http://connect.cd[Connect] is a Continuous Delivery Platform that gathers best practice approaches for deploying working software into the cloud with confidence.
+This downloads as a gziped tar file, so extract the folder, and move it to `/Library/Java/JavaVirtualMachines` but ensure
+you tack a `.jdk` on the end, so `jdk-11.0.2+9` becomes  `/Library/Java/JavaVirtualMachines/jdk-11.0.2+9.jdk`. 
+Then set the environment variable JAVA_HOME to that folder + /Contents/Home, i.e.
 
-The main documentation for link:http://connect.cd[Connect] can be found at link:http://docs.connect.cd[docs.connect.cd]
+----
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2+9.jdk/Contents/Home
+----
 
-Any queries on the link:http://connect.cd[Connect] platform can be sent to: connect@clearpoint.co.nz
+This will cause the installed 'java' to swap to that version. Type `java -version` to confirm it has changed. 
+
+== Application Structure
+
+- todo-api contains the swagger.yaml file and that is all.
+- todo-backend contains the Jersey + Netty implementation. No extra dependency framework is used as HK2 which comes
+with Jersey is good enough for our purposes. 
+- composite-* - these contain pom.xml files that consist solely of dependencies. This isolates dependencies around
+particular problems and makes them easy to depend on and upgrade across the board.
+- todo-feature-service - TODO - will contain the feature service for the TODO app
+- todo-tests-api - test the server via the API, these are CD style e2e tests
+- todo-tests-ui - test the running app via the API, these are CD style e2e tests
+- todo-frontend - this is a React frontend for the app. 
+
+
+== For completeness
+
+- use maven to build and deploy the app into local k8s (single node cluster in Docker)
+- use toolbox to build using jenkins
