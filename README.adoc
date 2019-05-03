@@ -1,3 +1,7 @@
+= Connect Simple ToDo App
+
+image:https://travis-ci.org/clearpointnz/connect-simple-todos-app.svg[caption="Travis Build Status"]
+
 == Description
 This is a simple todo microservice written in Java. The core of the application is extremely simple, but the
 intention is to show the use of an app that
