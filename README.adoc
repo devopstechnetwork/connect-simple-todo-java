@@ -32,7 +32,12 @@ Then set the environment variable JAVA_HOME to that folder + /Contents/Home, i.e
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
 ----
 
-This will cause the installed 'java' to swap to that version. Type `java -version` to confirm it has changed. 
+This will cause the installed 'java' to swap to that version. Type `java -version` to confirm it has changed.
+
+== Building from the command line
+
+Just type `mvn clean install` and it should build everything, including the Docker ready
+tar file (see below).  
 
 == Application Structure
 
