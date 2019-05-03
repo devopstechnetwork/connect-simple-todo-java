@@ -18,7 +18,6 @@ import java.util.Set;
 @Produces(MediaType.TEXT_PLAIN)
 public class JerseyPrometheusResource {
 	private CollectorRegistry registry;
-	private org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(getClass());
 
 	public JerseyPrometheusResource(CollectorRegistry registry) {
 		this.registry = registry;

@@ -22,9 +22,9 @@ public class TodoResource implements TodoService {
   }
 
   public List<Todo> addTodo(Todo body) {
-    body.id = UUID.randomUUID().toString();
+    body.id(UUID.randomUUID().toString());
 
-    todos.put(body.id, body);
+    todos.put(body.getId(), body);
 
     return new ArrayList<Todo>(todos.values());
   }
@@ -41,7 +41,7 @@ public class TodoResource implements TodoService {
   public List<Todo> resolveTodo(String id) {
     Todo todo = todos.get(id);
     if (todo != null) {
-      todo.resolved = true;
+      todo.resolved(true);
     }
     return new ArrayList<Todo>(todos.values());
   }

@@ -1,6 +1,7 @@
 package todo.backend;
 
 import cd.connect.jersey.prometheus.PrometheusDynamicFeature;
+import cd.connect.lifecycle.ApplicationLifecycleManager;
 import cd.connect.opentracing.LoggingSpanTracer;
 import io.jaegertracing.Configuration;
 import io.netty.channel.Channel;
@@ -10,6 +11,7 @@ import io.opentracing.contrib.jaxrs2.server.ServerTracingDynamicFeature;
 import io.opentracing.util.GlobalTracer;
 import io.prometheus.client.hotspot.DefaultExports;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
+import org.glassfish.jersey.logging.JerseyServerLogger;
 import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.slf4j.Logger;
@@ -23,6 +25,7 @@ public class Application {
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
 	
 	public static void main(String[] args) throws InterruptedException {
+
 		URI BASE_URI = URI.create(String.format("http://localhost:%s/",
 			System.getProperty("server.port", "8099")));
 
@@ -37,7 +40,7 @@ public class Application {
     // register our resources, try and tag them as singleton as they are instantiated faster
 		ResourceConfig config = new ResourceConfig(
       TodoResource.class,
-      JerseyServerLogging.class,
+      JerseyServerLogger.class,
       ClientTracingFeature.class,
       PrometheusDynamicFeature.class,
       JerseyPrometheusResource.class);

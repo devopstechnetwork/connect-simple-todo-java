@@ -29,7 +29,7 @@ you tack a `.jdk` on the end, so `jdk-11.0.2+9` becomes  `/Library/Java/JavaVirt
 Then set the environment variable JAVA_HOME to that folder + /Contents/Home, i.e.
 
 ----
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2+9.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
 ----
 
 This will cause the installed 'java' to swap to that version. Type `java -version` to confirm it has changed. 
@@ -46,8 +46,28 @@ particular problems and makes them easy to depend on and upgrade across the boar
 - todo-tests-ui - test the running app via the API, these are CD style e2e tests
 - todo-frontend - this is a React frontend for the app. 
 
+== Running inside the IDE
+
+As various libraries require unfettered access to the JVM, you need to ensure your JVM
+flags are:
+
+`--add-exports java.base/jdk.internal.misc=ALL-UNNAMED -Dio.netty.tryReflectionSetAccessible=true --add-opens java.base/java.nio=ALL-UNNAMED`
+
+This is included in the Docker image build. 
 
 == For completeness
 
 - use maven to build and deploy the app into local k8s (single node cluster in Docker)
 - use toolbox to build using jenkins
+
+== Building
+
+Build the reactor, it will build the todo-backend and generate a Docker image that can
+be loaded into Docker with 
+
+`docker load --input target/jib-image.tar`
+
+run with: `docker run -p 127.0.0.1:8099:8099/tcp cdconnect/todo-backend:latest`
+
+It uses Google's JIB for building the docker image so you can build it even if you don't
+have docker installed. You cannot run it this way however.
