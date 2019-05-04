@@ -17,7 +17,12 @@ It also shows how
 - separation of dependencies for ease of consistency across your project
 - Maven being able to provide reliable node 
 
-This example application is using Java 11.  
+This example application is using Java 11. 
+
+=== Contributors
+
+- Irina Southwell - Principal Engineer, ClearPoint NZ
+- Richard Vowles - Software Developer, ClearPoint NZ / Blue Train Software Ltd 
 
 == Installation Instructions
 
