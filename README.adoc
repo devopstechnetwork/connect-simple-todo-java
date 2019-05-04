@@ -1,6 +1,6 @@
 = Connect Simple ToDo App
 
-image:https://travis-ci.org/clearpointnz/connect-simple-todos-app.svg[caption="Travis Build Status"]
+image:https://api.travis-ci.com/ClearPointNZ/connect-simple-todo-java.svg?branch=master[caption="Travis Build Status"]
 
 == Description
 This is a simple todo microservice written in Java. The core of the application is extremely simple, but the
