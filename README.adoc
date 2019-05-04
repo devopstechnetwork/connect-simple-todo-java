@@ -38,7 +38,7 @@ you tack a `.jdk` on the end, so `jdk-11.0.2+9` becomes  `/Library/Java/JavaVirt
 Then set the environment variable JAVA_HOME to that folder + /Contents/Home, i.e.
 
 ----
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2+9.jdk/Contents/Home
 ----
 
 This will cause the installed 'java' to swap to that version. Type `java -version` to confirm it has changed.
