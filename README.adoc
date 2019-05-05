@@ -37,16 +37,22 @@ This downloads as a gziped tar file, so extract the folder, and move it to `/Lib
 you tack a `.jdk` on the end, so `jdk-11.0.2+9` becomes  `/Library/Java/JavaVirtualMachines/jdk-11.0.2+9.jdk`. 
 Then set the environment variable JAVA_HOME to that folder + /Contents/Home, i.e.
 
+If you have downloaded it from Oracle, use the following (or similar based on the version you have)
 ----
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2+9.jdk/Contents/Home
 ----
+If you have downloaded it from AdoptOpenJDK, then use this:
+----
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
+----
+
 
 This will cause the installed 'java' to swap to that version. Type `java -version` to confirm it has changed.
 
 == Building from the command line
 
 Just type `mvn clean install` and it should build everything, including the Docker ready
-tar file (see below).  
+tar file (see below). If you get an error like `--release` not known, you are using Java 8.  
 
 == Application Structure
 

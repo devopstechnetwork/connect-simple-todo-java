@@ -15,12 +15,14 @@
 	<packaging>jar</packaging>
 
 	<dependencies>
+    <!-- this is the loader, it starts the application and looks for services to kick off before the app starts -->
 		<dependency>
 			<groupId>com.bluetrainsoftware.bathe</groupId>
 			<artifactId>bathe-booter</artifactId>
 			<version>[3.1, 4)</version>
 		</dependency>
 
+    <!-- reads system properties from -Pfilenane and the main jump class from -R -->
 		<dependency>
 			<groupId>com.bluetrainsoftware.bathe.initializers</groupId>
 			<artifactId>system-property-loader</artifactId>
@@ -33,12 +35,27 @@
 			</exclusions>
 		</dependency>
 
+    <!-- ensures JUL goes to SLF4J -->
+    <dependency>
+      <groupId>com.bluetrainsoftware.bathe.initializers</groupId>
+      <artifactId>jul-bridge</artifactId>
+      <version>2.1</version>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- allows us to load yaml config -->
 		<dependency>
 			<groupId>org.yaml</groupId>
 			<artifactId>snakeyaml</artifactId>
 			<version>1.17</version>
 		</dependency>
 
+    <!-- allows us to extract data from env variables and put it into the logs -->
 		<dependency>
 			<groupId>cd.connect.common</groupId>
 			<artifactId>connect-env-logging</artifactId>

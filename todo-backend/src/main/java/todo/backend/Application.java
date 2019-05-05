@@ -1,25 +1,27 @@
 package todo.backend;
 
-import cd.connect.jersey.prometheus.PrometheusDynamicFeature;
+import cd.connect.jersey.common.CommonConfiguration;
+import cd.connect.jersey.common.InfrastructureConfiguration;
+import cd.connect.jersey.common.LoggingConfiguration;
 import cd.connect.lifecycle.ApplicationLifecycleManager;
+import cd.connect.lifecycle.LifecycleStatus;
 import cd.connect.opentracing.LoggingSpanTracer;
 import io.jaegertracing.Configuration;
-import io.netty.channel.Channel;
 import io.opentracing.Tracer;
 import io.opentracing.contrib.jaxrs2.client.ClientTracingFeature;
 import io.opentracing.contrib.jaxrs2.server.ServerTracingDynamicFeature;
 import io.opentracing.util.GlobalTracer;
 import io.prometheus.client.hotspot.DefaultExports;
+import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
-import org.glassfish.jersey.logging.JerseyServerLogger;
-import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import todo.backend.resources.JerseyPrometheusResource;
 import todo.backend.resources.TodoResource;
 
 import java.net.URI;
+import java.util.concurrent.TimeUnit;
 
 public class Application {
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -40,10 +42,10 @@ public class Application {
     // register our resources, try and tag them as singleton as they are instantiated faster
 		ResourceConfig config = new ResourceConfig(
       TodoResource.class,
-      JerseyServerLogger.class,
       ClientTracingFeature.class,
-      PrometheusDynamicFeature.class,
-      JerseyPrometheusResource.class);
+      CommonConfiguration.class,
+      LoggingConfiguration.class,
+      InfrastructureConfiguration.class);
 
 		config.register(new AbstractBinder() {
 			@Override
@@ -53,13 +55,13 @@ public class Application {
 			}
 		});
 
-		final Channel server = NettyHttpContainerProvider.createHttp2Server(BASE_URI, config, null);
+    final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, config, true);
 
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-			public void run() {
-				server.close();
-			}
-		}));
+    ApplicationLifecycleManager.registerListener(trans -> {
+      if (trans.next == LifecycleStatus.TERMINATING) {
+        server.shutdown(10, TimeUnit.SECONDS);
+      }
+    });
 
 		log.info("Application started. (HTTP/2 enabled!) -> {}", BASE_URI);
 
