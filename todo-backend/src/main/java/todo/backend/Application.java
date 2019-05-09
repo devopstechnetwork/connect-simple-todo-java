@@ -65,7 +65,10 @@ public class Application {
 
 		log.info("Application started. (HTTP/2 enabled!) -> {}", BASE_URI);
 
-		Thread.currentThread().join();
+		// tell the App we are ready
+    ApplicationLifecycleManager.updateStatus(LifecycleStatus.STARTED);
+
+    Thread.currentThread().join();
 	}
 
 	private static Tracer getTracer() {
