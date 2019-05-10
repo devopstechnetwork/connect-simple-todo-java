@@ -1,0 +1,28 @@
+# you must have the SRC environment variable this docker folder
+# export SRC=$PWD
+
+feature-service:
+  image: connectcd/sample-featureservice-inmemory:0.1
+  container_name: feature-service
+  ports:
+    - 8553:8553
+#  depends_on:
+#    - fluent-bit
+#    - mysql
+#  volumes:
+#    - ${SRC}/log4j2.xml:/etc/config/log4j2.xml
+#    - ${SRC}/feature-service.properties:/etc/config/application.properties
+#  entrypoint: java -Xmx128m
+#    -Dlog4j.configurationFile=/etc/config/log4j2.xml
+#    --add-exports=java.base/jdk.internal.misc=ALL-UNNAMED
+#    -Dio.netty.tryReflectionSetAccessible=true
+#    --add-opens=java.base/java.nio=ALL-UNNAMED
+#    -cp /app/libs/*:/app/resources:/app/classes
+#    bathe.BatheBooter
+#    -Rcd.connect.features.inmemory.Application
+#    -P/etc/config/application.properties
+#  logging:
+#    driver: fluentd
+#    options:
+#      fluentd-address: fluent-bit:24224
+#    -Rtodo.backend.Application

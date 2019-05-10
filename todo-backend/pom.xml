@@ -32,6 +32,12 @@
 			<version>1.1-SNAPSHOT</version>
 		</dependency>
 
+    <dependency>
+      <groupId>cd.connect.features</groupId>
+      <artifactId>feature-service-client-rest</artifactId>
+      <version>[2.1, 3)</version>
+    </dependency>
+
 		<dependency>
 			<groupId>cd.connect.composites.java</groupId>
 			<artifactId>connect-composite-test</artifactId>
