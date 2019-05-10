@@ -1,0 +1,16 @@
+<Configuration packages="cd.connect.logging" verbose="true">
+  <Appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <ConnectJsonLayout/>
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <AsyncLogger name="todo" level="debug"/>
+    <AsyncLogger name="jersey-logging" level="trace"/>
+
+    <AsyncRoot level="info">
+      <AppenderRef ref="STDOUT"/>
+    </AsyncRoot>
+  </Loggers>
+</Configuration>
