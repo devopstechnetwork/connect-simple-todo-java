@@ -1,6 +1,7 @@
 package todo.backend;
 
 import cd.connect.jersey.common.CommonConfiguration;
+import cd.connect.jersey.common.CorsFilter;
 import cd.connect.jersey.common.InfrastructureConfiguration;
 import cd.connect.jersey.common.LoggingConfiguration;
 import cd.connect.jersey.common.TracingConfiguration;
@@ -37,6 +38,7 @@ public class Application {
     // register our resources, try and tag them as singleton as they are instantiated faster
 		ResourceConfig config = new ResourceConfig(
       TodoResource.class,
+      CorsFilter.class,
       ClientTracingFeature.class,
       CommonConfiguration.class,
       LoggingConfiguration.class,
