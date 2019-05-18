@@ -19,6 +19,7 @@
 		<module>composite-app</module>
 		<module>todo-api</module>
 		<module>todo-backend</module>
-	</modules>
+    <module>todo-features</module>
+  </modules>
 
 </project>

@@ -13,6 +13,7 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import todo.Features;
 import todo.backend.resources.TodoResource;
 
 import java.net.URI;
@@ -31,7 +32,7 @@ public class Application {
 		// turn on all jvm prometheus metrics
     DefaultExports.initialize();
 
-    FeatureInitializer.initialize();
+    Features.initialize();
 
     // register our resources, try and tag them as singleton as they are instantiated faster
 		ResourceConfig config = new ResourceConfig(

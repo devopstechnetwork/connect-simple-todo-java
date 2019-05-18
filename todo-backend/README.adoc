@@ -10,7 +10,17 @@ yarn start
 TODO
 
 == Documentation
-There is no further specific documentation for this.
+
+This project also includes feature toggle service integration to demonstrate how back-end functionality can be toggled in production based on a feature status. 
+
+Feature toggled functionality: 
+
+Feature name: "FEATURE_TITLE_TO_UPPERCASE"
+
+If "FEATURE_TITLE_TO_UPPERCASE" is enabled - it will convert todo 'title' property to uppercase for every todo in the response for add/list/delete/resolve operations.  
+
+If this feature is disabled it will have todo 'title' in whatever format it was sent when a todo was created.
+
 
 The main documentation for link:http://connect.cd[Connect] can be found at: link:http://docs.connect.cd[docs.connect.cd]
 

@@ -2,6 +2,7 @@ package todo.backend.resources;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import todo.Features;
 import todo.api.TodoService;
 import todo.model.Todo;
 
@@ -11,11 +12,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 @Singleton
 public class TodoResource implements TodoService {
   private static final Logger log = LoggerFactory.getLogger(TodoResource.class);
-	Map<String, Todo> todos = new ConcurrentHashMap<String, Todo>();
+  Map<String, Todo> todos = new ConcurrentHashMap<String, Todo>();
 
   public TodoResource() {
     log.info("created");
@@ -26,16 +28,16 @@ public class TodoResource implements TodoService {
 
     todos.put(body.getId(), body);
 
-    return new ArrayList<Todo>(todos.values());
+    return getTodoList();
   }
 
   public List<Todo> listTodos() {
-    return new ArrayList<Todo>(todos.values());
+    return getTodoList();
   }
 
   public List<Todo> removeTodo(String id) {
     todos.remove(id);
-    return new ArrayList<Todo>(todos.values());
+    return getTodoList();
   }
 
   public List<Todo> resolveTodo(String id) {
@@ -43,6 +45,16 @@ public class TodoResource implements TodoService {
     if (todo != null) {
       todo.resolved(true);
     }
-    return new ArrayList<Todo>(todos.values());
+    return getTodoList();
+  }
+
+  private List<Todo> getTodoList() {
+
+    if (Features.FEATURE_TITLE_TO_UPPERCASE.isActive()) {
+      return new ArrayList<Todo>(todos.values().stream().map(t -> t.copy().title(t.getTitle().toUpperCase()))
+        .collect(Collectors.toList()));
+    }
+      else
+        return new ArrayList<Todo>(todos.values());
   }
 }

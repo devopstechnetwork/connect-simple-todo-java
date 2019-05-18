@@ -1,6 +1,7 @@
-package todo.backend;
+package todo;
 
 import cd.connect.features.client.BaseRestRepository;
+import cd.connect.features.client.Feature;
 import cd.connect.features.client.FeatureContext;
 import cd.connect.jersey.common.CommonConfiguration;
 import cd.connect.jersey.common.LoggingConfiguration;
@@ -8,13 +9,11 @@ import cd.connect.jersey.common.LoggingConfiguration;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
-/**
- *
- */
-public class FeatureInitializer {
+public enum Features implements Feature {
 
-  public enum FakeFeature {
-    FEATURE_X, FEATURE_Y
+  FEATURE_TITLE_TO_UPPERCASE;
+
+  private Features() {
   }
 
   public static void initialize() {
@@ -24,6 +23,10 @@ public class FeatureInitializer {
       .build();
 
     FeatureContext.repository = new BaseRestRepository(client, System.getProperty("feature-service.url"));
-    FeatureContext.repository.ensureFeaturesExist(FakeFeature.class);
+    FeatureContext.repository.ensureFeaturesExist(Features.class);
+  }
+
+  public boolean isActive() {
+    return FeatureContext.isActive(this);
   }
 }

@@ -88,3 +88,6 @@ definitions:
         type: string
       resolved:
         type: boolean
+      when:
+        type: string
+        format: date-time
