@@ -2,9 +2,11 @@
 Frontend for sample CRUD app
 
 == Installation Instructions
-yarn install
+`yarn install`
 
-yarn start
+`mvn clean generate-sources` to generate API 
+
+`yarn start`
 
 == Build Status
 TODO

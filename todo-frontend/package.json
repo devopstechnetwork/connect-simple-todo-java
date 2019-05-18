@@ -3,17 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/immutability-helper": "^2.0.15",
-    "axios": "^0.16.2",
-    "immutability-helper": "^2.4.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-scripts-ts": "2.7.0",
-    "swagger-typescript-codegen": "^1.2.0"
+    "axios": "^0.18.0",
+    "immutability-helper": "^2.9.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts-ts": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
-    "generate-api-client": "node scripts/generate-api.js",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
@@ -21,7 +18,8 @@
   "devDependencies": {
     "@types/jest": "^21.1.1",
     "@types/node": "^8.0.31",
-    "@types/react": "^16.0.7",
-    "@types/react-dom": "^15.5.5"
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
+    "typescript": "^3.4.5"
   }
 }
