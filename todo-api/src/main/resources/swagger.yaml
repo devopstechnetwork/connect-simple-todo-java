@@ -81,9 +81,12 @@ definitions:
   Todo:
     title: Todo
     type: object
+    required:
+      - id
     properties:
       id:
         type: string
+        required: true
       title:
         type: string
       resolved:
