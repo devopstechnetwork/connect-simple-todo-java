@@ -59,4 +59,4 @@ fabric.properties
 /swagger-backend/app/generated-interface.js
 /swagger-backend/app/generated-interface.js.map
 *.iml
-todo-tests-api-java/target
+
