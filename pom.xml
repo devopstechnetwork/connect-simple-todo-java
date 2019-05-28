@@ -20,6 +20,7 @@
 		<module>todo-api</module>
 		<module>todo-backend</module>
     <module>todo-features</module>
+    <module>todo-tests-api-java</module>
   </modules>
 
 </project>
