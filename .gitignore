@@ -60,3 +60,4 @@ fabric.properties
 /swagger-backend/app/generated-interface.js.map
 *.iml
 
+target

@@ -9,26 +9,16 @@ Feature: Todo API with feature toggles checks
     Then the to-do should be in the list with an id, title <expected_title> and a task resolved status as <resolve_status>
 
     Examples:
-      | resolve_status| title    |expected_title|
-      | false         | Buy Milk | Buy Milk     |
+      | resolve_status | title    | expected_title |
+      | false          | Buy Milk | Buy Milk       |
 
-  @FEATURE_UPPER_CASE
+  @FEATURE_TITLE_TO_UPPERCASE
   Scenario Outline: Add a new to-do task (GET and POST Todo) - toggle on
-    Given I add a new to-do with title <title>
+    Given i add a new to-do with title "<title>" and resolved status "<resolve_status>"
     When I get a list of all to-dos
-    Then the to-do should be in the list with an id, title <expected_title> and a task resolved status as <resolve_status>
+    Then the to-do should be in the list with an id, title "<expected_title>" and a task resolved status as "<resolve_status>"
 
     Examples:
-      | resolve_status| title    |expected_title|
-      | false         | Buy Milk | BUY MILK     |
+      | resolve_status | title    | expected_title |
+      | false          | Buy Milk | BUY MILK       |
 
-  Scenario Outline: Add a new to-do task (GET and POST Todo) example2
-    Given I add a new to-do with title <title>
-    When I get a list of all to-dos
-    Then the to-do should be in the list with an id, title <expected_title> and a task resolved status as <resolve_status>
-
-    Examples:
-      | resolve_status| title    |expected_title|
-      | false         | Buy Milk | Buy Milk     |
-  @toggle_on
-       | false         | Buy Milk | BUY MILK     |
