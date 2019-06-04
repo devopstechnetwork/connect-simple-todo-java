@@ -1,0 +1,13 @@
+== Description
+
+Sample test project to demonstrate API testing with Java, Cucumber 4, OpenAPI abd Connect Feature Toggle Service
+
+== Installation Instructions
+
+Compile with Maven:
+
+run from project root: `mvn clean compile`
+
+Run tests:
+
+run `mvn test`
